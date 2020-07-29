@@ -2,7 +2,7 @@
     {
         "name" : "Sweet Dreams",
         "bpm" : 552,
-        "note_length" : 1,
+        "note_length" : 3,
         "notes" : ["C4", "C4", "G4", "C4", "G#4", "C4", "G4", "C4", "G#3", "G#3", "D#4", "F4", "G3", "G3", "D4", "D#4"]
     },
     {

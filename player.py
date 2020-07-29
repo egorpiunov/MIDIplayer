@@ -10,9 +10,7 @@ with open('songs.json') as file:
     song = songs[int(input('Choose song:\n' + string)) - 1]
 
 note_list = []
-#note_length = 3
 repeats = int(input('Enter number of repeats:\n'))
-#notes = ['C4', 'C4', 'G4', 'C4', 'G#4', 'C4', 'G4', 'C4', 'G#3', 'G#3', 'D#4', 'F4', 'G3', 'G3', 'D4', 'D#4']
 for i in range(repeats):
     note_list.extend(song['notes'])
 
@@ -26,3 +24,4 @@ for note in note_list:
 mymidi = MIDITime(song['bpm'], f'./songs/{song["name"]}.mid')
 mymidi.add_track(midinotes)
 mymidi.save_midi()
+print(f'Track saved as {song["name"]}.mid in song folder.')
