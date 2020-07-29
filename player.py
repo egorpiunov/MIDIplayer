@@ -23,6 +23,6 @@ time = 0
 for note in note_list:
     midinotes.append([time, pitches[note], 127, song['note_length']])
     time += song['note_length']
-mymidi = MIDITime(song['bpm'], f'{song["name"]}.mid')
+mymidi = MIDITime(song['bpm'], f'./songs/{song["name"]}.mid')
 mymidi.add_track(midinotes)
 mymidi.save_midi()
