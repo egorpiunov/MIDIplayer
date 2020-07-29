@@ -1,43 +1,28 @@
 from miditime.miditime import MIDITime
-mymidi = MIDITime(552, 'music.mid')
-note_lenth = 3
-repeates = 5
-notes = ['C4', 'C4', 'G4', 'C4', 'G#4', 'C4', 'G4', 'C4', 'G#3', 'G#3', 'D#4', 'F4', 'G3', 'G3', 'D4', 'D#4']
-for i in range(0, repeates, 1):
-    notes.extend(notes)
-pitches = {
-    'C3'  : 48,
-    'C#3' : 49,
-    'D3'  : 50,
-    'D#3' : 51,
-    'E3'  : 52,
-    'F3'  : 53,
-    'F#3' : 54,
-    'G3'  : 55,
-    'G#3' : 56,
-    'A3'  : 57,
-    'A#3' : 58,
-    'B3'  : 59,
-    'C4'  : 60,
-    'C#4' : 61,
-    'D4'  : 62,
-    'D#4' : 63,
-    'E4'  : 64,
-    'F4'  : 65,
-    'F#4' : 66,
-    'G4'  : 67,
-    'G#4' : 68,
-    'A4'  : 69,
-    'A#4' : 70,
-    'B4'  : 71,
-    'C5'  : 72
-}
+import json
+with open('songs.json') as file:
+    songs = json.load(file)
+    string = ''
+    i = 0
+    for song in songs:
+        i += 1
+        string += f'({i}) {song["name"]}.\n'
+    song = songs[int(input('Choose song:\n' + string)) - 1]
+
+note_list = []
+#note_length = 3
+repeats = int(input('Enter number of repeats:\n'))
+#notes = ['C4', 'C4', 'G4', 'C4', 'G#4', 'C4', 'G4', 'C4', 'G#3', 'G#3', 'D#4', 'F4', 'G3', 'G3', 'D4', 'D#4']
+for i in range(repeats):
+    note_list.extend(song['notes'])
+
+with open('pitches.json', 'r') as file:
+    pitches = json.load(file)
 midinotes = []
 time = 0
-i = 0
-for note in notes:
-    midinotes.append([time, pitches[notes[i]], 127, note_lenth])
-    i += 1
-    time += note_lenth
+for note in note_list:
+    midinotes.append([time, pitches[note], 127, song['note_length']])
+    time += song['note_length']
+mymidi = MIDITime(song['bpm'], f'{song["name"]}.mid')
 mymidi.add_track(midinotes)
 mymidi.save_midi()
