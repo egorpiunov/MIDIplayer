@@ -1,7 +1,10 @@
 from miditime.miditime import MIDITime
 mymidi = MIDITime(552, 'music.mid')
 note_lenth = 3
+repeates = 5
 notes = ['C4', 'C4', 'G4', 'C4', 'G#4', 'C4', 'G4', 'C4', 'G#3', 'G#3', 'D#4', 'F4', 'G3', 'G3', 'D4', 'D#4']
+for i in range(0, repeates, 1):
+    notes.extend(notes)
 pitches = {
     'C3'  : 48,
     'C#3' : 49,
