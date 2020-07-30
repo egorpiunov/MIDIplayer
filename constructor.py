@@ -1,6 +1,9 @@
 from midi.miditime.miditime import MIDITime
 import json, os
 
+if not os.path.exists('./songs'):
+    os.mkdir('./songs')
+
 with open('songs.json') as file:
     songs = json.load(file)
     string = ''
@@ -31,5 +34,5 @@ mymidi = MIDITime(tempo = song['bpm']*2, outfile = f'./songs/{song["name"]}.mid'
 mymidi.add_track(midinotes)
 mymidi.save_midi(instrument)
 print(f'Track saved as {song["name"]}.mid in song folder.')
-os.system(os.path.abspath(f'./songs/{song["name"]}.mid'))
+os.system(os.path.abspath(f'./songs/"{song["name"]}.mid"'))
 input('Press Enter to exit...')
