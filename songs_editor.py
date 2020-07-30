@@ -20,3 +20,4 @@ if input('Do you understend? (Y)es/(N)o:\n') == 'Y':
     create()
 else:
     print('Abort, abort!')
+input('Press Enter to exit...')

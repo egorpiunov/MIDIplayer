@@ -41,3 +41,5 @@ songs.append(song)
 
 with open('songs.json', 'w') as file:
     json.dump(songs, file, sort_keys=True, indent=2)
+
+input('Press Enter to exit...')
