@@ -1,6 +1,6 @@
 import json
 
-def create():
+def editor():
     with open('songs.json', 'r') as file:
         songs = json.load(file)
 
@@ -17,7 +17,7 @@ def create():
 
 print('Your songs file may be destroyed')
 if input('Do you understend? (Y)es/(N)o:\n') == 'Y':
-    create()
+    editor()
 else:
     print('Abort, abort!')
 input('Press Enter to exit...')
