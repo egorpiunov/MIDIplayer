@@ -13,7 +13,7 @@ def create():
 
     with open('songs.json', 'w') as file:
         json.dump(songs, file, sort_keys=True, indent=2)
-    print('File rewrited!')
+    print('File has been rewrited!')
 
 print('Your songs file may be destroyed')
 if input('Do you understend? (Y)es/(N)o:\n') == 'Y':

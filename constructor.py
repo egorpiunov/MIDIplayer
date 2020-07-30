@@ -1,5 +1,6 @@
-from miditime.miditime import MIDITime
-import json
+from midi.miditime.miditime import MIDITime
+import json, os
+
 with open('songs.json') as file:
     songs = json.load(file)
     string = ''
@@ -10,7 +11,10 @@ with open('songs.json') as file:
     song = songs[int(input('Choose song:\n' + string)) - 1]
 
 note_list = []
+
 repeats = int(input('Enter number of repeats:\n'))
+instrument = int(input('Enter instrument number:\n'))
+
 for i in range(repeats):
     note_list.extend(song['notes'])
 
@@ -23,8 +27,9 @@ for note in note_list:
         midinotes.append([time, pitches[note[0]], 127, note[1]])
     time += note[1]
     
-mymidi = MIDITime(song['bpm']*2, f'./songs/{song["name"]}.mid')
+mymidi = MIDITime(tempo = song['bpm']*2, outfile = f'./songs/{song["name"]}.mid')
 mymidi.add_track(midinotes)
-mymidi.save_midi()
+mymidi.save_midi(instrument)
 print(f'Track saved as {song["name"]}.mid in song folder.')
+os.system(os.path.abspath(f'./songs/{song["name"]}.mid'))
 input('Press Enter to exit...')
