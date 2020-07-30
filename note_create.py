@@ -11,18 +11,21 @@ ret = False
 print('Enter notes (e.g. C#4), to return to previos note enter "return":\n')
 
 while cycle == True:
-    note = input()
-    if not note == 'return' and not note == 'end':
+    note = input().split(' ')
+    if len(note) == 1:
+        note.append(note_length)
+    note[1] = float(note[1])
+    if not note[0] == 'return' and not note[0] == 'end':
         if ret:
             notes[i] = note
             ret = False
         else:
             notes.append(note)
         i += 1
-    elif note == 'return':
+    elif note[0] == 'return':
         i -= 1
         ret = True
-    elif note == 'end':
+    elif note[0] == 'end':
         cycle = False
 
 song = {
