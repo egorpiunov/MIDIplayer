@@ -1,1 +1,1 @@
-# MIDIconstractor wich use MIDItime mudule to construct midi files by your notes in songs.json
+# MIDIconstractor wich use MIDItime mudule to construct midi files from your notes in songs.json
