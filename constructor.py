@@ -1,4 +1,4 @@
-from midi.miditime.miditime import MIDITime
+from midi.miditime import MIDITime
 import json, os
 
 if not os.path.exists('./songs'):

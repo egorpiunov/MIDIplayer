@@ -1,4 +1,4 @@
-from midiutil.MidiFile3 import MIDIFile
+from midi.MidiFile3 import MIDIFile
 class MIDITime(object):
 
     def __init__(self, tempo=120, outfile='miditime.mid'):
