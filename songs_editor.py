@@ -15,7 +15,7 @@ def create():
         json.dump(songs, file, sort_keys=True, indent=2)
     print('File rewrited!')
 
-print('Your songs files may be destroyed')
+print('Your songs file may be destroyed')
 if input('Do you understend? (Y)es/(N)o:\n') == 'Y':
     create()
 else:

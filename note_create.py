@@ -2,7 +2,7 @@ import json
 
 name = input('Enter song name:\n')
 bpm = int(input('Enter bpm:\n'))
-note_length = int(input('Enter length of notes:\n'))
+note_length = float(input('Enter length of notes:\n'))
 
 notes = []
 i = 0
