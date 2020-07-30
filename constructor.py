@@ -16,7 +16,7 @@ with open('songs.json') as file:
 note_list = []
 
 repeats = int(input('Enter number of repeats:\n'))
-instrument = int(input('Enter instrument number:\n'))
+instrument = int(input('Enter instrument number (e.g. Piano - 1, Overdr. Guitar - 30):\n')) - 1
 
 for i in range(repeats):
     note_list.extend(song['notes'])
