@@ -19,8 +19,10 @@ with open('pitches.json', 'r') as file:
 midinotes = []
 time = 0
 for note in note_list:
-    midinotes.append([time, pitches[note], 127, song['note_length']])
+    if not note == 'PAUSE':
+        midinotes.append([time, pitches[note], 127, song['note_length']])
     time += song['note_length']/2
+    
 mymidi = MIDITime(song['bpm'], f'./songs/{song["name"]}.mid')
 mymidi.add_track(midinotes)
 mymidi.save_midi()
