@@ -1,7 +1,8 @@
 from midi.MidiFile3 import MIDIFile
-class MIDITime(object):
 
-    def __init__(self, tempo=120, outfile='miditime.mid'):
+class MIDInotes(object):
+
+    def __init__(self, tempo=120, outfile='midi.mid'):
         self.tempo = tempo
         self.outfile = outfile
         self.tracks = []
@@ -23,7 +24,7 @@ class MIDITime(object):
     def save_midi(self, instrument):
         # Create the MIDIFile Object with 1 track
         self.MIDIFile = MIDIFile(len(self.tracks))
-        self.MIDIFile.addProgramChange(0, 0, 0, instrument)
+        #self.MIDIFile.addProgramChange(0, 0, 0, instrument)
 
         for i, note_list in enumerate(self.tracks):
 
@@ -31,9 +32,10 @@ class MIDITime(object):
             track = i
             time = 0
 
-            # Add track name and tempo.
+            # Add track name, tempo and instrument change event
             self.MIDIFile.addTrackName(track, time, "Track %s" % i)
             self.MIDIFile.addTempo(track, time, self.tempo)
+            self.MIDIFile.addProgramChange(track, 0, time, instrument)
 
             for n in note_list:
                 if len(n) == 2:
@@ -45,6 +47,5 @@ class MIDITime(object):
                 self.add_note(track, channel, note)
 
         # And write it to disk.
-        binfile = open(self.outfile, 'wb')
-        self.MIDIFile.writeFile(binfile)
-        binfile.close()
+        with open(self.outfile, 'wb') as binfile:
+            self.MIDIFile.writeFile(binfile)
