@@ -1,4 +1,4 @@
-from midi.MidiFile3 import MIDIFile
+from midiutil.MidiFile3 import MIDIFile
 
 class MIDInotes(object):
 
