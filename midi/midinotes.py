@@ -16,7 +16,7 @@ class MIDInotes(object):
         velocity = note[2]
         duration = note[3]
 
-        #print(pitch, time, duration, velocity)
+        print(pitch, time, duration, velocity)
 
         # Now add the note.
         self.MIDIFile.addNote(track, channel, pitch, time, duration, velocity)

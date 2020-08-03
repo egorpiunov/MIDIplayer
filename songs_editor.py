@@ -5,10 +5,13 @@ def create():
         songs = json.load(file)
 
     for song in songs:
-        if song['name'] == 'Name of song':
+        if song['name'] == 'Every breath you take':
             notes = []
             for note in song['notes']:
-                notes.append([note[0], song['note_length']])
+                if note[0] == 'PAUSE':
+                    notes.append([note[0], 1/16])
+                else:
+                    notes.append([note[0], song['note_length']])
             song['notes'] = notes
 
     with open('songs.json', 'w') as file:
