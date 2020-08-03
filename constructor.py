@@ -1,4 +1,4 @@
-from midi.midinotes import MIDInotes
+from midinotes import MIDInotes
 import json, os
 
 if not os.path.exists('./songs'):
