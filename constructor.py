@@ -1,4 +1,4 @@
-from midi.miditime.miditime import MIDITime
+from midinotes import MIDInotes
 import json, os
 
 if not os.path.exists('./songs'):
@@ -30,7 +30,7 @@ for note in note_list:
         midinotes.append([time, pitches[note[0]], 127, note[1]])
     time += note[1]
     
-mymidi = MIDITime(tempo = song['bpm']*2, outfile = f'./songs/{song["name"]}.mid')
+mymidi = MIDInotes(tempo = song['bpm']*2, outfile = f'./songs/{song["name"]}.mid')
 mymidi.add_track(midinotes)
 mymidi.save_midi(instrument)
 print(f'Track saved as {song["name"]}.mid in song folder.')
